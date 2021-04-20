@@ -56,7 +56,7 @@ router.post("/login", checkUsernameExists, (req, res, next) => {
 });
 function makeToken (user) {
   const payload = {
-    subject: user.id,
+    subject: user.user_id,
     username: user.username,
     role_name: user.role_name
   }
