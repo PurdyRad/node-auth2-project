@@ -14,17 +14,6 @@ router.post("/register", validateRoleName, (req, res, next) => {
     res.status(201).json(newUser);
   })
   .catch(next);
-  /**
-    [POST] /api/auth/register { "username": "anna", "password": "1234", "role_name": "angel" }
-
-    response:
-    status 201
-    {
-      "user"_id: 3,
-      "username": "anna",
-      "role_name": "angel"
-    }
-   */
 });
 
 
