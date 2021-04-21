@@ -13,19 +13,6 @@ function findBy(filter) {
   .where(filter)
   .select('u.user_id', 'u.username', 'u.password', 'r.role_name')
   .orderBy('u.user_id', 'asc');
-  /**
-    You will need to join two tables.
-    Resolves to an ARRAY with all users that match the filter condition.
-
-    [
-      {
-        "user_id": 1,
-        "username": "bob",
-        "password": "$2a$10$dFwWjD8hi8K2I9/Y65MWi.WU0qn9eAVaiBoRSShTvuJVGw8XpsCiq",
-        "role_name": "admin",
-      }
-    ]
-   */
 }
 
 function findById(user_id) {
@@ -34,19 +21,9 @@ function findById(user_id) {
   .where({user_id})
   .select('u.user_id', 'u.username', 'r.role_name')
   .first();
-  /**
-    You will need to join two tables.
-    Resolves to the user with the given user_id.
-
-    {
-      "user_id": 2,
-      "username": "sue",
-      "role_name": "instructor"
-    }
-   */
 }
 
-/**
+/**      GIVEN DESCRIPTION----NOT DELETEING----GIVEN DESCRIPTION
   Creating a user requires a single insert (into users) if the role record with the given
   role_name already exists in the db, or two inserts (into roles and then into users)
   if the given role_name does not exist yet.
@@ -80,6 +57,7 @@ async function add({ username, password, role_name }) { // done for you
   })
   return findById(created_user_id)
 }
+
 
 module.exports = {
   add,
